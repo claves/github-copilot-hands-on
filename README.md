@@ -19,12 +19,20 @@ docker build -t weather-app .
 ```
 2. イメージからコンテナを起動
 ```
-docker run -p 8501:8501 weather-app
+docker run --rm -t -p 8501:8501 weather-app
 ```
 3. streamlitがインストールされていないエラーが出るため、コンテナをシェルモードで起動する
+※ハンズオンでstreamlitが入っていないのが原因なのをCopilotに聞いてstreamlitを入れる動作を行う必要があるため
+## Mac/Linuxの場合
 ```
-docker run -it -p 8501:8501 -v $(pwd):/app --entrypoint /bin/bash weather-app
+docker run --rm -t -it -p 8501:8501 -v $(pwd):/app --entrypoint /bin/bash weather-app
 ```
+
+## Windowsの場合
+```
+docker run --rm -t -it -p 8501:8501 -v %cd%¥app --entrypoint /bin/bash weather-app
+```
+
 4. コンテナ内でstreamlitをインストールする
 ```
 pip install streamlit
